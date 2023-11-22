@@ -55,9 +55,10 @@ const Header: React.FC<HeaderProps> = ({ text }) => {
           {!isSearchMode && <HeaderText text={text} />}
           {isSearchMode && (
             <SearchInput
+              id="search"
               value={searchTerm}
               onChange={handleSearchInputChanges}
-              type="text"
+              type="search"
             />
           )}
         </HeaderLeftRow>

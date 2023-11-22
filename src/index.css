@@ -45,3 +45,8 @@ html {
 ::-webkit-scrollbar-thumb {
   background: #ffff;
 }
+
+#search::-webkit-search-cancel-button{
+  position:relative;
+  right:12px;   
+}
