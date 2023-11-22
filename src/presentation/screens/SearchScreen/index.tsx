@@ -1,3 +1,4 @@
+import { ContentItem } from "domain/entities";
 import Header from "presentation/components/molecules/Header";
 import SearchContent from "presentation/components/organisms/Search";
 import { useAppDispatch } from "presentation/hooks/useAppDispatch";
@@ -6,10 +7,10 @@ import { fetchContent } from "presentation/store/slices/Content-Slice";
 import React from "react";
 import { useEffect, useState } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
-
+import { ScrollView } from "./style";
 const SearchScreen = () => {
   const [pageCount, setPageCount] = useState<number>(1);
-
+  const [searchResults, setSearchResult] = useState<Array<ContentItem>>([]);
   const dispatch = useAppDispatch();
   const { pageResponse, contentItems } = useAppSelector(
     (state) => state.content
@@ -34,15 +35,22 @@ const SearchScreen = () => {
 
   return (
     <InfiniteScroll
+      style={ScrollView.inlineStyle}
       dataLength={contentItems.length}
       next={fetchData}
       hasMore={
         pageResponse?.page?.totalContentItems !== contentItems.length.toString()
-      } 
+      }
       loader={<p>Loading...</p>}
     >
       <Header text={pageResponse?.page?.title ?? ""} />
-      <SearchContent contentList={contentItems} />
+      <SearchContent
+        contentList={contentItems}
+        searchResult={searchResults}
+        setSearchResult={(result) => {
+          setSearchResult(result);
+        }}
+      />
     </InfiniteScroll>
   );
 };

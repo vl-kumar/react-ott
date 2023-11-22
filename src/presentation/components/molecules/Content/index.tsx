@@ -4,9 +4,6 @@ import React from "react";
 import { CardContainer } from "./style";
 import ContentImage from "presentation/components/atoms/ContentImage";
 
-const DEFAULT_PLACEHOLDER_IMAGE =
-  "https://test.create.diagnal.com/images/placeholder_for_missing_posters.png";
-
 interface ContentProps {
   content: ContentItem;
 }

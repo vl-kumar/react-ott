@@ -10,6 +10,7 @@ export interface Spacings {
   sm: string;
   md: string;
   xmd: string;
+  xxmd: string;
   lg: string;
   xl: string;
 }
@@ -41,6 +42,7 @@ const spacings: Spacings = {
   sm: "8px",
   md: "12px",
   xmd: "16px",
+  xxmd: "20px",
   lg: "24px",
   xl: "32px",
 };
@@ -62,8 +64,8 @@ const fontSizes: FontSizes = {
 export const lightTheme: Theme = {
   name: "light",
   colors: {
-    primary: "#0070f3",
-    secondary: "#FFFFFF",
+    primary: "#171717",
+    secondary: "#FFDE36",
     textColor: "#FFFFFF",
   },
   spacings: spacings,
@@ -74,7 +76,7 @@ export const darkTheme: Theme = {
   name: "dark",
   colors: {
     primary: "#171717",
-    secondary: "#FFFFFF",
+    secondary: "#FFDE36",
     textColor: "#FFFFFF",
   },
   spacings: spacings,
