@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { memo, useEffect, useMemo } from "react";
 import { ContentItem } from "domain/entities";
 import Content from "presentation/components/molecules/Content";
 import { ContentGrid, MainContainer } from "./style";
@@ -11,7 +11,7 @@ interface SearchContentProps {
   setSearchResult: (searchResult: Array<ContentItem>) => void;
 }
 
-const SearchContent: React.FC<SearchContentProps> = ({
+const SearchContent: React.FC<SearchContentProps> = memo(({
   contentList,
   searchResult,
   setSearchResult,
@@ -28,23 +28,33 @@ const SearchContent: React.FC<SearchContentProps> = ({
     setSearchResult(result);
   }, [searchTerm]);
 
+  const showContentList = useMemo(()=>{
+    return searchTerm.length < 3 && contentList.length > 0 
+  },[searchTerm, contentList])
+
+  const showSearchResults = useMemo(()=>{
+    return searchTerm.length > 2 && searchResult.length > 0 
+  },[searchTerm, searchResult])
+
+  const showNoSearchResults = useMemo(()=>{
+    return searchTerm.length > 0 && searchResult.length === 0
+  },[searchTerm, searchResult])
+
   return (
     <MainContainer>
       <ContentGrid>
-        {searchTerm.length < 3 &&
-          contentList.length > 0 &&
+        {showContentList &&
           contentList.map((content: ContentItem, index: number) => (
             <Content key={`${index}-${content.name}`} content={content} />
           ))}
-        {searchTerm.length > 2 &&
-          searchResult.length > 0 &&
+        {showSearchResults &&
           searchResult.map((content: ContentItem, index: number) => (
             <Content key={`${index}-${content.name}`} content={content} />
           ))}
       </ContentGrid>
-      {searchTerm.length > 0 && searchResult.length === 0 && <NoSearchResults />}
+      {showNoSearchResults && <NoSearchResults />}
     </MainContainer>
   );
-};
+});
 
 export default SearchContent;

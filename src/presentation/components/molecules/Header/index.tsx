@@ -15,22 +15,16 @@ import {
   toggleSearchMode,
 } from "presentation/store/slices/Search-slice";
 import { useAppSelector } from "presentation/hooks/useAppSelector";
-import { useEffect, useState } from "react";
+import { memo, useCallback, useEffect, useState } from "react";
 import useDebounce from "presentation/hooks/useDebounce";
 interface HeaderProps {
   text: string;
 }
-const Header: React.FC<HeaderProps> = ({ text }) => {
+const Header: React.FC<HeaderProps> = memo(({ text }) => {
   const dispatch = useAppDispatch();
   const [searchTerm, setSearchTerm] = useState("");
   const { isSearchMode } = useAppSelector((state) => state.search);
   const debouncedSearchTerm = useDebounce(searchTerm, 300);
-
-  function resetSearch() {
-    setSearchTerm('')
-    dispatch(toggleSearchMode({ isSearchMode: false }));
-    dispatch(clean());
-  }
 
   useEffect(() => {
     dispatch(search({ searchTerm: debouncedSearchTerm }));
@@ -39,6 +33,16 @@ const Header: React.FC<HeaderProps> = ({ text }) => {
   const handleSearchInputChanges = (e: any) => {
     setSearchTerm(e.target.value);
   };
+
+  const resetSearch = useCallback(() => {
+    setSearchTerm("");
+    dispatch(toggleSearchMode({ isSearchMode: false }));
+    dispatch(clean());
+  }, [dispatch]);
+
+  const toggleSearch = useCallback(() => {
+    dispatch(toggleSearchMode({ isSearchMode: true }));
+  }, [dispatch]);
 
   return (
     <HeaderContainer>
@@ -49,6 +53,7 @@ const Header: React.FC<HeaderProps> = ({ text }) => {
       <HeaderRow>
         <HeaderLeftRow>
           <BackIcon
+            alt="Back Icon"
             onClick={resetSearch}
             src={"https://test.create.diagnal.com/images/Back.png"}
           />
@@ -64,15 +69,14 @@ const Header: React.FC<HeaderProps> = ({ text }) => {
         </HeaderLeftRow>
         {!isSearchMode && (
           <SearchIcon
+            alt={"Search Icon"}
             src={"https://test.create.diagnal.com/images/search.png"}
-            onClick={() => {
-              dispatch(toggleSearchMode({ isSearchMode: true }));
-            }}
+            onClick={toggleSearch}
           />
         )}
       </HeaderRow>
     </HeaderContainer>
   );
-};
+});
 
 export default Header;

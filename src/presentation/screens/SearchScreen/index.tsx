@@ -4,9 +4,11 @@ import SearchContent from "presentation/components/organisms/Search";
 import { useAppDispatch } from "presentation/hooks/useAppDispatch";
 import { useAppSelector } from "presentation/hooks/useAppSelector";
 import { fetchContent } from "presentation/store/slices/Content-Slice";
-import { useEffect, useState } from "react";
+import {  useEffect, useState } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { ScrollView } from "./style";
+
+
 const SearchScreen = () => {
   const [pageCount, setPageCount] = useState<number>(1);
   const [searchResults, setSearchResult] = useState<Array<ContentItem>>([]);

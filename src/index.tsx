@@ -10,9 +10,9 @@ const root = ReactDOM.createRoot(
 
 // Currently disabled StrictMode it's rendering 2 times in develop mode
 root.render(
-  <React.StrictMode>
+  // <React.StrictMode>
       <App />
-  </React.StrictMode>
+  // </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function

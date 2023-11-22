@@ -1,7 +1,8 @@
 import { useAppSelector } from "presentation/hooks/useAppSelector";
 import { Container, ImageView, SubTextView, TextView } from "./style";
 import NoResult from "assets/no-result.png";
-const NoSearchResults = () => {
+import { memo } from "react";
+const NoSearchResults = memo(() => {
   const { searchTerm } = useAppSelector((state) => state.search);
   return (
     <Container>
@@ -10,6 +11,6 @@ const NoSearchResults = () => {
       <SubTextView>Try searching for somthing else pr try with a different spelling</SubTextView>
     </Container>
   );
-};
+});
 
 export default NoSearchResults;
