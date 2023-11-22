@@ -1,18 +1,20 @@
 {
   "files": {
     "main.css": "/react-ott/static/css/main.6287aa4a.css",
-    "main.js": "/react-ott/static/js/main.2a6ec0e2.js",
-    "static/js/543.23bc9eac.chunk.js": "/react-ott/static/js/543.23bc9eac.chunk.js",
+    "main.js": "/react-ott/static/js/main.e2625d37.js",
+    "static/js/543.805cb23d.chunk.js": "/react-ott/static/js/543.805cb23d.chunk.js",
+    "static/js/22.c2bf08a0.chunk.js": "/react-ott/static/js/22.c2bf08a0.chunk.js",
     "static/js/787.0eb7b187.chunk.js": "/react-ott/static/js/787.0eb7b187.chunk.js",
     "static/media/no-result.png": "/react-ott/static/media/no-result.20129ebe4cd6f574c78f.png",
     "index.html": "/react-ott/index.html",
     "main.6287aa4a.css.map": "/react-ott/static/css/main.6287aa4a.css.map",
-    "main.2a6ec0e2.js.map": "/react-ott/static/js/main.2a6ec0e2.js.map",
-    "543.23bc9eac.chunk.js.map": "/react-ott/static/js/543.23bc9eac.chunk.js.map",
+    "main.e2625d37.js.map": "/react-ott/static/js/main.e2625d37.js.map",
+    "543.805cb23d.chunk.js.map": "/react-ott/static/js/543.805cb23d.chunk.js.map",
+    "22.c2bf08a0.chunk.js.map": "/react-ott/static/js/22.c2bf08a0.chunk.js.map",
     "787.0eb7b187.chunk.js.map": "/react-ott/static/js/787.0eb7b187.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.6287aa4a.css",
-    "static/js/main.2a6ec0e2.js"
+    "static/js/main.e2625d37.js"
   ]
 }
